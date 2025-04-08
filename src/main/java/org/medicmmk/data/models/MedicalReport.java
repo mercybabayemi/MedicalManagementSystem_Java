@@ -2,7 +2,7 @@ package org.medicmmk.data.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.medicmmk.data.model.Patient;
+import org.medicmmk.data.models.Patient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data

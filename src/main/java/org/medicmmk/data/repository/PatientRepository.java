@@ -1,6 +1,6 @@
 package org.medicmmk.data.repository;
 
-import org.medicmmk.data.model.Patient;
+import org.medicmmk.data.models.Patient;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

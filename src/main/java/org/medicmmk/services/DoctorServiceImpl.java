@@ -5,6 +5,7 @@ import org.medicmmk.data.repository.DoctorRepository;
 import org.medicmmk.dtos.requests.DoctorLoginRequest;
 import org.medicmmk.dtos.requests.RegisterDoctorRequest;
 import org.medicmmk.exceptions.IncorrectPasswordException;
+import org.medicmmk.exceptions.InvalidEmailInputException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class DoctorServiceImpl implements DoctorService {
     public Doctor loginDoctorToProfile(DoctorLoginRequest request) {
         Doctor foundUser = doctorRepository.findByEmail(request.getEmail()).orElse(null);
         assert foundUser != null;
+        if (!foundUser.getEmail().equals(request.getEmail())) throw new InvalidEmailInputException("Invalid Email");
         if (!foundUser.getPassword().equals(request.getPassword())) throw new IncorrectPasswordException("Wrong Password");
         return foundUser;
     }
@@ -39,6 +41,26 @@ public class DoctorServiceImpl implements DoctorService {
 
     public Doctor findDoctorProfileByEmail(String email){
         return doctorRepository.findByEmail(email).orElse(null);
+    }
+
+    @Override
+    public Doctor viewSchedule() {
+        return null;
+    }
+
+    @Override
+    public Doctor searchForPatientByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public Doctor searchForPatientByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public Doctor searchForPatientByPassword(String password) {
+        return null;
     }
 
     public List<Doctor> findALL(){

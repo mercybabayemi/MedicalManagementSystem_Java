@@ -13,4 +13,8 @@ public interface DoctorService {
     Doctor findDoctorProfileByPassword(String password);
     List<Doctor> findALL();
     Doctor findDoctorProfileByEmail(String email);
+    Doctor viewSchedule();
+    Doctor searchForPatientByUsername(String username);
+    Doctor searchForPatientByEmail(String email);
+    Doctor searchForPatientByPassword(String password);
 }
