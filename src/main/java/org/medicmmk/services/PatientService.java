@@ -1,5 +1,7 @@
 package org.medicmmk.services;
 
+import org.medicmmk.data.models.Appointment;
+import org.medicmmk.data.models.Doctor;
 import org.medicmmk.data.models.Patient;
 import org.medicmmk.dtos.requests.PatientLoginRequest;
 import org.medicmmk.dtos.requests.PatientSignUpRequest;
@@ -12,11 +14,8 @@ import java.util.List;
 
 public interface PatientService {
 
-    Patient getPatient(String email);
-//    void bookAppointment(Doctor doctor, LocalDate date, LocalTime time);
-//    List<PatientAppointment> getListOfAppointments();
-    void updatePatientProfile(String PatientId, String updates);
-
+    Patient findPatient(String email);
+    Patient findByUsername(String userName);
     PatientLoginResponse login(PatientLoginRequest patientLoginRequest);
     void deleteAllPatients();
     PatientSignUpResponse signUp(PatientSignUpRequest patientSignUpRequest);

@@ -1,5 +1,7 @@
 package org.medicmmk.services;
 
+import org.medicmmk.data.models.Appointment;
+import org.medicmmk.data.models.Doctor;
 import org.medicmmk.data.models.Patient;
 import org.medicmmk.data.repository.PatientRepository;
 import org.medicmmk.exceptions.DuplicatePatientException;
@@ -23,25 +25,14 @@ public class PatientServicesImpl implements PatientService {
     PatientRepository patientRepository;
 
 
-
     @Override
-    public Patient getPatient(String email) {
+    public Patient findPatient(String email) {
         return null;
     }
 
-//    @Override
-//    public void bookAppointment(Doctor doctor, LocalDate date, LocalTime time) {
-//
-//    }
-//
-//    @Override
-//    public List<PatientAppointment> getListOfAppointments() {
-//        return List.of();
-//    }
-
     @Override
-    public void updatePatientProfile(String PatientId, String updates) {
-
+    public Patient findByUsername(String userName) {
+        return null;
     }
 
     @Override
@@ -51,7 +42,6 @@ public class PatientServicesImpl implements PatientService {
         if (patient == null) throw new PatientDoesNotExistException("Patient Does Not Exist");
         String password = patientLoginRequest.getPassword();
         validatePassword(password,patient);
-        patient.setLoggedIn(true);
         PatientLoginResponse patientLoginResponse = new PatientLoginResponse();
         patientLoginResponse.setPatientLoginResponse("Login Successful");
         return patientLoginResponse;
