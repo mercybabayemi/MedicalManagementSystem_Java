@@ -35,9 +35,6 @@ public class DoctorServiceImpl implements DoctorService {
         return doctorRepository.findByUsername(username).orElse(null);
     }
 
-    public Doctor findDoctorProfileByPassword(String password){
-        return doctorRepository.findByPassword(password).orElse(null);
-    }
 
     public Doctor findDoctorProfileByEmail(String email){
         return doctorRepository.findByEmail(email).orElse(null);
@@ -55,11 +52,6 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor searchForPatientByEmail(String email) {
-        return null;
-    }
-
-    @Override
-    public Doctor searchForPatientByPassword(String password) {
         return null;
     }
 

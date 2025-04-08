@@ -42,11 +42,6 @@ public class DoctorController {
         return ResponseEntity.ok(doctorService.findDoctorProfileByUsername(request.getUsername()));
     }
 
-    @GetMapping("/doctor/password")
-    public ResponseEntity<Doctor> getDoctorProfileByPassword(@RequestBody GetDoctorProfile request){
-        return ResponseEntity.ok(doctorService.findDoctorProfileByPassword(request.getPassword()));
-    }
-
     @GetMapping("/doctors")
     public ResponseEntity<List<Doctor>> getAllUsers(){
         return ResponseEntity.ok(doctorService.findALL());
