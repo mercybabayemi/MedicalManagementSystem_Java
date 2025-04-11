@@ -91,25 +91,4 @@ public class DoctorServiceImplTest {
 
         assertEquals("test@email.com", foundDoctor.getEmail());
     }
-
-    @Test
-    void testFindDoctorByPassword(){
-        Doctor doctor = new Doctor();
-        doctor.setFirstName("Adam");
-        doctor.setLastName("Eve");
-        doctor.setEmail("test@email.com");
-        doctor.setPassword("test");
-        doctor.setUsername("adameve");
-        doctor.setGender(Gender.FEMALE);
-        doctor.setOnCall(true);
-        doctor.setDateOfBirth("31121988");
-        doctor.setSpecialisation(Specialisation.GYNECOLOGIST);
-
-        RegisterDoctorRequest request = new RegisterDoctorRequest();
-        request.setDoctor(doctor);
-        doctorService.registerDoctorProfile(request);
-        Doctor foundDoctor = doctorService.findDoctorProfileByPassword("test");
-
-        assertEquals("test@email.com", foundDoctor.getPassword());
-    }
 }

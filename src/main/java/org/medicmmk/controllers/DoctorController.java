@@ -1,10 +1,12 @@
 package org.medicmmk.controllers;
 
 
+import jakarta.validation.Valid;
 import org.medicmmk.data.models.Doctor;
 import org.medicmmk.dtos.requests.DoctorLoginRequest;
 import org.medicmmk.dtos.requests.GetDoctorProfile;
 import org.medicmmk.dtos.requests.RegisterDoctorRequest;
+import org.medicmmk.dtos.response.RegisterDoctorResponse;
 import org.medicmmk.services.DoctorService;
 import org.medicmmk.services.DoctorServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -23,17 +25,19 @@ public class DoctorController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Doctor> register(@RequestBody RegisterDoctorRequest request) {
-        return ResponseEntity.ok(doctorService.registerDoctorProfile(request));
+    public ResponseEntity<RegisterDoctorResponse> register(@RequestBody RegisterDoctorRequest request) {
+        String doctorId = doctorService.registerDoctorProfile(request).getId();
+        RegisterDoctorResponse response = new RegisterDoctorResponse(doctorId, "Doctor registered successfully");
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Doctor> login(@RequestBody DoctorLoginRequest request){
+    public ResponseEntity<Doctor> login(@Valid @RequestBody DoctorLoginRequest request){
         return ResponseEntity.ok(doctorService.findDoctorProfileByEmail(request.getEmail()));
     }
 
     @GetMapping("/doctor/email")
-    public ResponseEntity<Doctor> getDoctorProfileByEmail(@RequestBody GetDoctorProfile request){
+    public ResponseEntity<Doctor> getDoctorProfileByEmail(@Valid @RequestBody GetDoctorProfile request){
         return ResponseEntity.ok(doctorService.findDoctorProfileByEmail(request.getEmail()));
     }
 

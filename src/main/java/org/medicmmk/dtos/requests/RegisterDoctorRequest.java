@@ -6,5 +6,6 @@ import org.medicmmk.data.models.Doctor;
 @Setter
 @Getter
 public class RegisterDoctorRequest {
+    @Valid
     private Doctor doctor;
 }
