@@ -33,11 +33,11 @@
     cursor: pointer;
     width: 100px;
     padding-left: 10px;
-li
+
 }
 .imageonediv{
     display: inline-block;
-    width: 300pc;
+    width: 300px;
     display: flex;
 
 }

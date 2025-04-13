@@ -23,17 +23,17 @@ public class DoctorController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<Doctor> register(@RequestBody RegisterDoctorRequest request) {
+    public ResponseEntity<Doctor> register(@Valid@RequestBody RegisterDoctorRequest request) {
         return ResponseEntity.ok(doctorService.registerDoctorProfile(request));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Doctor> login(@RequestBody DoctorLoginRequest request){
+    public ResponseEntity<Doctor> login(@Valid@RequestBody DoctorLoginRequest request){
         return ResponseEntity.ok(doctorService.findDoctorProfileByEmail(request.getEmail()));
     }
 
     @GetMapping("/doctor/email")
-    public ResponseEntity<Doctor> getDoctorProfileByEmail(@RequestBody GetDoctorProfile request){
+    public ResponseEntity<Doctor> getDoctorProfileByEmail(@valid@RequestBody GetDoctorProfile request){
         return ResponseEntity.ok(doctorService.findDoctorProfileByEmail(request.getEmail()));
     }
 

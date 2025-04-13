@@ -1,10 +1,9 @@
 package org.medicmmk.services;
 
-import org.medicmmk.data.models.Appointment;
-import org.medicmmk.data.models.Doctor;
 import org.medicmmk.data.models.Patient;
 import org.medicmmk.data.repository.PatientRepository;
 import org.medicmmk.exceptions.DuplicatePatientException;
+import org.medicmmk.exceptions.InvalidEmailException;
 import org.medicmmk.exceptions.InvalidPasswordException;
 import org.medicmmk.exceptions.PatientDoesNotExistException;
 import org.medicmmk.dtos.requests.PatientLoginRequest;
@@ -13,10 +12,6 @@ import org.medicmmk.dtos.response.PatientLoginResponse;
 import org.medicmmk.dtos.response.PatientSignUpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 @Service
 public class PatientServicesImpl implements PatientService {
@@ -30,21 +25,26 @@ public class PatientServicesImpl implements PatientService {
         return null;
     }
 
-    @Override
-    public Patient findByUsername(String userName) {
-        return null;
-    }
+
 
     @Override
     public PatientLoginResponse login(PatientLoginRequest patientLoginRequest) {
-
+        validateEmail(patientLoginRequest.getEmail());
         Patient patient = patientRepository.findByEmail(patientLoginRequest.getEmail());
-        if (patient == null) throw new PatientDoesNotExistException("Patient Does Not Exist");
+        ValidatePatient(patient);
         String password = patientLoginRequest.getPassword();
         validatePassword(password,patient);
         PatientLoginResponse patientLoginResponse = new PatientLoginResponse();
         patientLoginResponse.setPatientLoginResponse("Login Successful");
         return patientLoginResponse;
+    }
+
+    private void ValidatePatient(Patient patient) {
+        if (patient == null) throw new PatientDoesNotExistException("Patient Does Not Exist");
+    }
+
+    private void validateEmail(String email) {
+        if (email == null) throw new InvalidEmailException("Invalid Credentials ");
     }
 
     private void validatePassword(String password, Patient patient) {
@@ -77,5 +77,12 @@ public class PatientServicesImpl implements PatientService {
     public long patientsCount() {
         return patientRepository.count();
     }
+
+    @Override
+    public void bookAppointment(PatientAppointmentRequest patientAppointmentRequest) {
+
+
+    }
+
 
 }
