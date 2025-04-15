@@ -3,7 +3,11 @@ package org.medicmmk.data.models;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Document(collection = "doctor")
@@ -18,7 +22,7 @@ public class Doctor {
     @NotBlank(message = "Name cannot be blank")
     private String lastName;
     @Email(message = "Email should be valid")
-    @NotEmpty(message = "Email cannot be empty")
+//    @NotEmpty(message = "Email cannot be empty")
     private String email;
     private String phone;
     private Gender gender;

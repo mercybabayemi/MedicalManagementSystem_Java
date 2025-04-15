@@ -1,35 +1,21 @@
 package org.medicmmk.data.models;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@Document(collection = "schedule")
 public class Schedule {
+    @Id
+    private String id;
+    @NotNull
+    private String doctorId;
     private List<TimeSlot> timeSlots;
-
-    public Schedule() {
-        this.timeSlots = new ArrayList<>();
-    }
-
-    public void addTimeSlot(TimeSlot timeSlot) {
-        timeSlots.add(timeSlot);
-    }
-
-    public boolean isAvailable(LocalDateTime startTime, LocalDateTime endTime) {
-        for (TimeSlot slot : timeSlots) {
-            if (slot.getStartTime().isBefore(endTime) && slot.getEndTime().isAfter(startTime) && !slot.isAvailable()) {
-                return false; // Slot is booked
-            }
-        }
-        return true; // Slot is available
-    }
-
-    public void bookSlot(LocalDateTime startTime, LocalDateTime endTime) {
-        for (TimeSlot slot : timeSlots) {
-            if (slot.getStartTime().equals(startTime) && slot.getEndTime().equals(endTime)) {
-                slot.book();
-                break; // Slot booked
-            }
-        }
-    }
 }

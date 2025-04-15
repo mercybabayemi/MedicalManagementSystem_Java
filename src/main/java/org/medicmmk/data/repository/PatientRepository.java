@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface PatientRepository extends MongoRepository<Patient, String> {
      Patient findByEmail(String email);
      Patient findByUserName(String userName);
-
 }

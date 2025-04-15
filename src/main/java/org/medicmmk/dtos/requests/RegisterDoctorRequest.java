@@ -1,4 +1,5 @@
 package org.medicmmk.dtos.requests;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.Setter;
 import org.medicmmk.data.models.Doctor;

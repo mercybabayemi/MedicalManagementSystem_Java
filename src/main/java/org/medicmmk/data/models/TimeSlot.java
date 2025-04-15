@@ -1,28 +1,13 @@
 package org.medicmmk.data.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
+@Data
 public class TimeSlot {
-    private final LocalDateTime startTime;
-    private final LocalDateTime endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private boolean isBooked;
-
-    public TimeSlot(LocalDateTime newStartTime, LocalDateTime newEndTime) {
-        this.startTime = newStartTime;
-        this.endTime = newEndTime;
-        this.isBooked = false;
-    }
-
-    public boolean isAvailable() {
-        return isBooked;
-    }
-
-    public void book() {
-        this.isBooked = true;
-    }
 }

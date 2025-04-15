@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 
@@ -17,9 +18,11 @@ public class Appointment {
     private LocalDateTime date;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
+    @DBRef
     @NotNull(message = "Patient must be assigned")
-    private Patient patient;
+    private String patientId;
+    @DBRef
     @NotNull(message = "Doctor must be assigned")
-    private Doctor doctor;
+    private String doctorId;
     private Status status;
 }
