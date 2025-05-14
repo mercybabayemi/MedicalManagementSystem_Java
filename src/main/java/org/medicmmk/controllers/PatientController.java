@@ -19,12 +19,12 @@ public class PatientController {
     private PatientServicesImpl patientServices;
 
     @PostMapping("/Signup")
-    public PatientSignUpResponse signUp( @RequestBody PatientSignUpRequest patientSignUpRequest){
+    public PatientSignUpResponse signUp(@Valid @RequestBody PatientSignUpRequest patientSignUpRequest){
         return patientServices.signUp(patientSignUpRequest);
     }
 
     @PostMapping("/login")
-    public PatientLoginResponse login(@RequestBody PatientLoginRequest patientLoginRequest){
+    public PatientLoginResponse login(@Valid @RequestBody PatientLoginRequest patientLoginRequest){
         return patientServices.login(patientLoginRequest);
     }
 

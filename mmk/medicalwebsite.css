@@ -1,0 +1,97 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+.body{
+    background-color: white;
+
+}
+
+.navLinks {
+    test-decoration: none;
+    color: black;
+}
+
+.signin{
+    height: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+}
+.Register{
+    height: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    padding-left: 10px;
+
+}
+.imageonediv{
+    display: inline-block;
+    width: 300px;
+    display: flex;
+
+}
+.imageone{
+    width: 600px;
+    display: inline-block;
+
+}
+.text{
+    background-color: rgb(248, 248, 255);
+    padding-left: 20px;
+    padding-right: 500px;
+}
+.reviews{
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.review-card{
+    display: inline-block;
+    display: flex;
+}
+.Register-div{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: 500px 400px;
+
+}
+.image-div{
+    background-color: lightblue;
+    width: 550px;   
+    padding-right: 500px; 
+}
+.canvas{
+    width: 300px;
+}
+.xlogo{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px 1fr 1fr;
+}
+.register-div{
+    background-color: rgb(247, 242, 242);
+}
+.appointment-div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    
+}
+.appointment-button{
+    margin-left: 30px;
+    margin-top: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    height: 30px;
+}

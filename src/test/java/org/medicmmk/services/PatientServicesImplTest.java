@@ -8,6 +8,7 @@ import org.medicmmk.dtos.requests.PatientLoginRequest;
 import org.medicmmk.dtos.requests.PatientSignUpRequest;
 import org.medicmmk.dtos.response.PatientLoginResponse;
 import org.medicmmk.dtos.response.PatientSignUpResponse;
+import org.medicmmk.exceptions.PatientDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,6 +22,8 @@ class PatientServicesImplTest {
     PatientSignUpRequest patientSignUpRequest;
     @Autowired
     private PatientServicesImpl patientServiceImpl;
+    @Autowired
+    private MedicalReportServicesImpl medicalReportServiceImpl;
 
     @BeforeEach
     public void setUp() {
@@ -28,6 +31,7 @@ class PatientServicesImplTest {
         patientSignUpRequest = new PatientSignUpRequest();
         patientSignUpRequest.setFirstName("FirstName");
         patientSignUpRequest.setLastName("LastName");
+        patientSignUpRequest.setUserName("UserName");
         patientSignUpRequest.setEmail("email@email.com");
         patientSignUpRequest.setPassword("password");
     }
@@ -47,6 +51,7 @@ class PatientServicesImplTest {
         PatientSignUpRequest patientSignUpRequestDuplicate = new PatientSignUpRequest();
         patientSignUpRequestDuplicate.setFirstName("FirstName");
         patientSignUpRequestDuplicate.setLastName("LastName");
+        patientSignUpRequestDuplicate.setUserName("UserName");
         patientSignUpRequestDuplicate.setEmail("email@email.com");
         patientSignUpRequestDuplicate.setPassword("password");
         assertEquals(1,patientServiceImpl.patientsCount());
@@ -64,6 +69,7 @@ class PatientServicesImplTest {
         PatientSignUpRequest patientSignUpRequestTwo = new PatientSignUpRequest();
         patientSignUpRequestTwo.setFirstName("SecondFirstName");
         patientSignUpRequestTwo.setLastName("SecondLastName");
+        patientSignUpRequestTwo.setUserName("UserName");
         patientSignUpRequestTwo.setEmail("SecondEmail@email.com");
         patientSignUpRequestTwo.setPassword("SecondPassword");
         PatientSignUpResponse patientSignUpResponseTwo = patientServiceImpl.signUp(patientSignUpRequestTwo);
@@ -98,17 +104,31 @@ class PatientServicesImplTest {
     }
 
     @Test
-    public void PatientCanNotLoginWithInvalidUserUserName_Test(){
+    public void PatientCanNotLoginWithInvalidEmailTest(){
 
         PatientSignUpResponse patientSignUpResponse = patientServiceImpl.signUp(patientSignUpRequest);
         assertThat(patientSignUpResponse, notNullValue());
         PatientLoginRequest patientLoginRequest = new PatientLoginRequest();
-        patientLoginRequest.setEmail("email@email.com");
-        patientLoginRequest.setPassword("WrongPassword");
-        assertThrows( InvalidPasswordException.class,()->patientServiceImpl.login(patientLoginRequest));
+        patientLoginRequest.setEmail("wrongemail@email.com");
+        patientLoginRequest.setPassword("Password");
+        assertThrows( PatientDoesNotExistException.class,()->patientServiceImpl.login(patientLoginRequest));
 
     }
+    @Test
+    public void PatientCanBookAppointmentTest(){
+        PatientSignUpResponse patientSignUpResponse = patientServiceImpl.signUp(patientSignUpRequest);
+        assertThat(patientSignUpResponse, notNullValue());
+        PatientLoginRequest patientLoginRequest = new PatientLoginRequest();
+        patientLoginRequest.setEmail("email@email.com");
+        patientLoginRequest.setPassword("Password");
+        patientServiceImpl.login(patientLoginRequest);
+        PatientAppointmentRequest patientAppointmentRequest = new PatientAppointmentRequest();
+//        patientAppointmentRequest.setDate();
+//        patientAppointmentRequest.getDoctor();
+        patientServiceImpl.bookAppointment(patientAppointmentRequest);
 
+
+    }
 
 
 }

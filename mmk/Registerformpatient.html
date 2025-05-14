@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .body{
+            background-color:lightblue;
+        }
+        .doctor,
+        .Registration{
+           text-align: center;
+           margin-left: 100px;
+        }
+        .input{
+            margin-left: 300px;
+            background-color:  rgb(248, 248, 255);
+            padding-left: 200px;
+            display: inline-block;
+            padding-right: 100px;
+            
+        }
+        .sub{
+            background-color: black;
+            color: white;
+            border-radius: 20px;
+            width: 150px;
+            margin-top: 20px;
+        }
+        .image{
+            display: inline-block;
+            display: flex;
+        }
+        .image img{
+            width: 50px;
+            height: 50px;
+            margin-left:200px;
+        }
+        .Blood{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .surname,
+        .email,
+        .doctor-info,
+        .date,
+        .Blood-type,
+        .home-address,
+        .allergies,
+        .Complain,
+        .name{
+            padding-right: 200px;
+            border-radius: 5px;
+            
+        }
+
+    </style>
+
+    <title>Registration From</title>
+</head>
+<body>
+<div class="body">
+    <div class="image">
+        <img src="IMG_4859(1) 1.png">
+        <div>
+            <h1 class="Registration">
+                Registration Form
+            </h1>
+            <p class="doctor">Patient</p>
+            
+        </div>
+    </div>
+
+
+<div class="input">
+    <div>
+        <p>Name</p>
+        <input class="name" type="text" placeholder="Value">
+    </div>
+    <div>
+        <p>Surname</p>
+        <input class="surname" type="text" placeholder="Value">
+    </div>
+    <div>
+        <p>E-mail</p>
+        <input class="email" type="email" placeholder="Value">
+    </div>
+    <div  class="Blood">
+    <div>
+        <p>Blood Group</p>
+        <input class="blood-group"  placeholder="Value">
+    </div>
+    <div>
+        <p>Genotype</p>
+        <input class="genotype" placeholder="Value">
+    </div>
+    </div>
+    <div>
+        <p>Blood type</p>
+        <input class="Blood-type" placeholder="Value">
+    </div>
+    <div>
+        <p>home Address</p>
+        <input class="home-address" placeholder="value">
+    </div>
+    <div>
+        <p>allergies</p>
+        <input class="allergies" placeholder="value">
+    </div>
+    <div>
+        <p>Complain</p>
+        <input class="Complain" placeholder="Value">
+    </div>
+    <div>
+        <p>Date of birth(dd/mm/yyyy)</p>
+        <input class="date" type="date" placeholder="value"> 
+    </div>
+
+    <div>
+        <a href="appointment.html" class="sub">submit</a>
+    </div>
+
+
+</div>
+</div>
+
+</body>
+</html>

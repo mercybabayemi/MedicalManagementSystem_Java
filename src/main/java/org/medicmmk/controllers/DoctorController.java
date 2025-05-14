@@ -32,6 +32,7 @@ public class DoctorController {
     }
 
     @PostMapping("/register")
+<<<<<<< HEAD
     public ResponseEntity<RegisterDoctorResponse> register(@RequestBody RegisterDoctorRequest request) {
         Doctor doctor = doctorService.registerDoctor(request);
         return ResponseEntity.ok(new RegisterDoctorResponse(doctor.getId(), "Doctor registered successfully"));
@@ -47,6 +48,20 @@ public class DoctorController {
     public ResponseEntity<GetDoctorProfileByEmailResponse> getDoctorProfileByEmail(@Valid @RequestBody GetDoctorProfileByEmailRequest request){
         Doctor doctor = doctorService.findDoctorByEmail(request);
         return ResponseEntity.ok(new GetDoctorProfileByEmailResponse(doctor));
+=======
+    public ResponseEntity<Doctor> register(@Valid@RequestBody RegisterDoctorRequest request) {
+        return ResponseEntity.ok(doctorService.registerDoctorProfile(request));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Doctor> login(@Valid@RequestBody DoctorLoginRequest request){
+        return ResponseEntity.ok(doctorService.findDoctorProfileByEmail(request.getEmail()));
+    }
+
+    @GetMapping("/doctor/email")
+    public ResponseEntity<Doctor> getDoctorProfileByEmail(@valid@RequestBody GetDoctorProfile request){
+        return ResponseEntity.ok(doctorService.findDoctorProfileByEmail(request.getEmail()));
+>>>>>>> upstream/main
     }
 
     @GetMapping("/doctor/username")
